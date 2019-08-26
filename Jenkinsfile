@@ -6,6 +6,10 @@ pipeline{
 		PATH = "/user/lib/mvn/apache-maven-3.5.4/bin:$PATH"
     }
 	
+	tools {
+		maven 'apache-maven-3.5.4'
+	}
+	
 	stages{ 
 		stage('source code checkout'){
 			steps{
