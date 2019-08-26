@@ -1,11 +1,21 @@
-node{
+pipeline{
+	agent any
+	
 	environment {
         MAVEN_HOME = '/user/lib/mvn/apache-maven-3.5.4'
-		PATH = "$MAVEN_HOME/bin:$PATH"
+		PATH = "/user/lib/mvn/apache-maven-3.5.4/bin:$PATH"
     }
-	stage 'source code'
-	git credentialsId: 'github-personal', url: 'https://github.com/tudorift/generic_java.git'
 	
-	stage 'build and package'
-	sh 'mvn clean package'
+	stages{ 
+		stage('source code checkout'){
+			steps{
+				git credentialsId: 'github-personal', url: 'https://github.com/tudorift/generic_java.git'
+			}
+		}
+		stage('Maven build and package'){
+			steps{
+				sh 'mvn clean package'
+			}
+		}
+	}
 }
