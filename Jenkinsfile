@@ -14,7 +14,10 @@ pipeline{
 		}
 		stage('Maven build and package'){
 			steps{
-				sh 'mvn clean package'
+				echo $MAVEN_HOME
+				echo $PATH
+				sh 'prntenv'
+				sh '${$MAVEN_HOME}/bin/mvn clean package'
 			}
 		}
 	}
