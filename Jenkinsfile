@@ -17,7 +17,7 @@ pipeline{
 				echo $MAVEN_HOME
 				echo $PATH
 				sh 'prntenv'
-				sh '${$MAVEN_HOME}/bin/mvn clean package'
+				sh '${MAVEN_HOME}/bin/mvn clean package'
 			}
 		}
 	}
