@@ -1,11 +1,6 @@
 pipeline{
 	agent any
-	
-	environment {
-        MAVEN_HOME = '/user/lib/mvn/apache-maven-3.5.4'
-		PATH = "/user/lib/mvn/apache-maven-3.5.4/bin:$PATH"
-    }
-	
+
 	tools {
 		maven 'apache-maven-3.5.4'
 	}
@@ -18,10 +13,8 @@ pipeline{
 		}
 		stage('Maven build and package'){
 			steps{
-				echo "${MAVEN_HOME}"
-				echo "${PATH}"
 				sh 'printenv'
-				sh '${MAVEN_HOME}/bin/mvn clean package'
+				sh 'mvn clean package'
 			}
 		}
 	}
